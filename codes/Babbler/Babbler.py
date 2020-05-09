@@ -11,7 +11,7 @@ class Babbler:
         self.text = text
         self.counts = defaultdict(lambda: defaultdict(int))
         for x in range(len(text) - n):
-            # finds amount of times a char follows char string of n length
+            # finds amount of times a char follows a char string of n length
             self.counts[text[x:x + n]][text[x + n]] = self.counts[text[x:x + n]][text[x + n]] + 1
 
     def babble(self, word, length):
