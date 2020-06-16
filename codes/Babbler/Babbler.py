@@ -30,15 +30,19 @@ class Babbler:
         return t
 
 
-# test code
+# example code
+
 
 # choose intelligence and text file
 # "intelligence" is how many char the system looks at when choosing the next character
-s = Babbler(1, 'short.txt')
-# print dictionary
-print(s.counts)
-# choose starting string and output string length
-print(s.babble('t', 10))
+# s = Babbler(1, 'short.txt')
 
-m = Babbler(10, 'moby.txt')
-print(m.babble('call me ishmael. some years ago', 150))
+# print dictionary
+# print(s.counts)
+
+# choose starting string and output string length
+# print(s.babble('t', 10))
+
+
+# m = Babbler(10, 'moby.txt')
+# print(m.babble('call me ishmael. some years ago', 150))
