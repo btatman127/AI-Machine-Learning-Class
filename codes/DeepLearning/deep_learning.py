@@ -14,12 +14,14 @@ def unpickle(file):
 
 # Read the data
 data_dir = 'cifar-10-batches-py/' #my laptop
+# batches 1,2,3,4 are training sets
 train = [unpickle(data_dir + 'data_batch_{}'.format(i)) for i in [1, 2, 3, 4]]
 X_train = np.stack([t[b'data'] for t in train])
 X_train = tf.transpose(tf.reshape(X_train, [-1, 3, 32, 32]), (0, 2, 3, 1))
 y_train = list(itertools.chain(*[t[b'labels'] for t in train]))
 y_train = np.array(y_train)
 
+# batch 5 is validation set
 batch5 = unpickle(data_dir + 'data_batch_5')
 X_valid = batch5[b'data']
 X_valid = tf.transpose(tf.reshape(X_valid, [-1, 3, 32, 32]), (0, 2, 3, 1))
@@ -52,8 +54,8 @@ predictions = model.predict_classes(X_train)
 
 i = 42
 plt.imshow(X_train[i])
-# correct answer
+# prediction
 print(f'{predictions[i]}: {labels[predictions[i]]}')
-# guess
+# correct answer
 print(f'{y_train[i]}: {labels[y_train[i]]}')
 plt.show()
