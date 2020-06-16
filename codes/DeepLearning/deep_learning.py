@@ -27,6 +27,8 @@ y_valid = np.array(batch5[b'labels'])
 
 labels = unpickle(data_dir + 'batches.meta')[b'label_names']
 
+# https://www.pyimagesearch.com/2018/12/31/keras-conv2d-and-convolutional-layers/
+# ^ good source to understand what is happening here
 model = keras.models.Sequential()
 model.add(keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=(32, 32, 3)))
 model.add(keras.layers.MaxPooling2D((2, 2)))
@@ -35,6 +37,7 @@ model.add(keras.layers.MaxPooling2D((2, 2)))
 model.add(keras.layers.Conv2D(64, (3, 3), activation='relu'))
 model.add(keras.layers.Flatten())
 model.add(keras.layers.Dense(64, activation='relu'))
+# there are 10 classes
 model.add(keras.layers.Dense(10))
 
 model.compile(loss=keras.losses.SparseCategoricalCrossentropy(from_logits=True),
@@ -54,5 +57,3 @@ print(f'{predictions[i]}: {labels[predictions[i]]}')
 # guess
 print(f'{y_train[i]}: {labels[y_train[i]]}')
 plt.show()
-
-
